@@ -1,0 +1,46 @@
+@import A
+@import B
+@import C
+@import D
+@import E
+
+@param objects: List<A>
+
+<!doctype html>
+<html lang="en">
+<body>
+<div>
+<%--    @for(obj in objects)--%>
+<%--        Name: ${obj.name}--%>
+<%--        @if(obj is B)--%>
+<%--            X:${obj.x}--%>
+<%--        @elseif(obj is D)--%>
+<%--            Y:${obj.y}--%>
+<%--            Z1:${obj.z1}--%>
+<%--        @elseif(obj is E)--%>
+<%--            Y:${obj.y}--%>
+<%--            Z2:${obj.z2}--%>
+<%--        @elseif(obj is C)--%>
+<%--            Y:${obj.y}--%>
+<%--        @endif--%>
+<%--    @endfor--%>
+    @for(obj in objects)
+        Name: ${obj.name}
+        @if(obj is B)
+            X:${obj.x}
+        @endif
+        @if(obj is D)
+            Y:${obj.y}
+            Z1:${obj.z1}
+        @endif
+        @if(obj is E)
+            Y:${obj.y}
+            Z2:${obj.z2}
+        @endif
+        @if(obj is C && obj !is D && obj !is E)
+            Y:${obj.y}
+        @endif
+    @endfor
+</div>
+</body>
+</html>
